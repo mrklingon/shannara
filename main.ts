@@ -22,6 +22,12 @@ function mkLand () {
             skl.push(0)
         }
     }
+    Sword = randint(-20, 20)
+    if (Sword < 0) {
+        lnd[100 + Sword] = 3
+    } else {
+        lnd[Sword] = 3
+    }
 }
 input.onButtonPressed(Button.AB, function () {
     if (chkSkull(loc)) {
@@ -74,6 +80,15 @@ function showLND (locat: number) {
         } else {
             led.unplot(index, 0)
         }
+        if (spot == 3) {
+            led.plot(index, 2)
+            led.plot(index, 3)
+            led.plot(index, 4)
+            if (index == 2) {
+                game.setScore(1000)
+                game.gameOver()
+            }
+        }
     }
     led.plot(1, 3)
     led.plot(1, 4)
@@ -81,6 +96,7 @@ function showLND (locat: number) {
 let skspot = 0
 let spot = 0
 let skore = 0
+let Sword = 0
 let lnd: number[] = []
 let skl: number[] = []
 let cur = 0
