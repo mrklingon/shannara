@@ -34,10 +34,10 @@ input.onButtonPressed(Button.AB, function () {
             . . . . .
             . . . . .
             . . . . .
-            . # . . .
+            . . . . .
             . . . . .
             `)
-        game.addScore(5 * randint(3, 7))
+        skore = 5 * randint(3, 7)
         showLND(loc)
     }
     showLND(loc)
@@ -80,11 +80,13 @@ function showLND (locat: number) {
 }
 let skspot = 0
 let spot = 0
+let skore = 0
 let lnd: number[] = []
 let skl: number[] = []
 let cur = 0
 let loc = 0
 game.setLife(5)
+let hit = 0
 mkLand()
 loc = 0
 basic.showIcon(IconNames.TShirt)
@@ -102,8 +104,27 @@ showLND(loc)
 basic.forever(function () {
     basic.pause(1000 * (1 + randint(0, 3)))
     if (chkSkull(loc)) {
-        game.removeLife(1)
+        basic.showLeds(`
+            . # # # .
+            # . # . #
+            # # # # #
+            . # # # .
+            . # . # .
+            `)
+        basic.pause(100)
+        basic.showLeds(`
+            . . . . .
+            . . . . .
+            . . . . .
+            . . . . .
+            . . . . .
+            `)
+        hit += 1
         showLND(loc)
         basic.pause(2000)
+        if (hit >= 5) {
+            game.setScore(skore)
+            game.setLife(0)
+        }
     }
 })
