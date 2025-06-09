@@ -22,7 +22,7 @@ function mkLand () {
             skl.push(0)
         }
     }
-    Sword = randint(-20, 20)
+    Sword = randint(33, 66)
     if (Sword < 0) {
         lnd[100 + Sword] = 3
     } else {
@@ -85,7 +85,7 @@ function showLND (locat: number) {
             led.plot(index, 3)
             led.plot(index, 4)
             if (index == 2) {
-                game.setScore(1000)
+                game.setScore(1000 + skore)
                 game.gameOver()
             }
         }
