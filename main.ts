@@ -43,7 +43,7 @@ input.onButtonPressed(Button.AB, function () {
             . . . . .
             . . . . .
             `)
-        skore = 5 * randint(3, 7)
+        skore = skore + 5 * randint(3, 7)
         showLND(loc)
     }
     showLND(loc)
